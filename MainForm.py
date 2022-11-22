@@ -1,13 +1,3 @@
-"""
-    FEITO POR:
-    CAIO JONATHAN
-    LARISSA BATISTA
-    LIDYANE ALVES
-    LUCAS MENDONÇA
-    PEDRO GABRIEL
-    RYAN VINÍCIUS
-    
-"""
 from ast import Break
 import Function as fn
 from User import user
@@ -20,25 +10,11 @@ class CA:
         self.Password = sen
         self.CheckingBalance = slc
         self.StatusLog = stt
-        
-    def getCheckingBalance(self):
-        return self.__CheckingBalance
-
-    def setCheckingBalance(self):
-        return self.__CheckingBalance
-
-    def getSavingsBalance(self):
-        return self.__SavingsBalance
-
-    def setSavingsBalance(self):
-        return self.__SavingsBalance
-
 
 class SA(CA):
     def __init__(self,cod='',tit='',sen=0,slc=0,stt=False):
         super().__init__(cod,tit,sen,slc,stt)
         self.SavingsBalance = 0
-
     # CADASTRO DE CONTA #
     def CAD(self):
         
@@ -227,14 +203,17 @@ class SA(CA):
         try:
             print('Valor disponivel para saque: R$ ',self.CheckingBalance)
             vS = float(input('Insira um valor para o saque: R$ '))
-            if vS > self.getCheckingBalance():
-                print('Saldo insuficiente. Seu saldo é R$', self.getCheckingBalance())
+            if vS > self.CheckingBalance:
+                print('Saldo insuficiente. Seu saldo é R$', self.CheckingBalance)
             else:
-                saldoAtual = self.getCheckingBalance()
-                saldoAtual -= vS
-                self.setCheckingBalance(saldoAtual)  
+                SLCant = self.CheckingBalance
+                self.CheckingBalance -= vS
                 print('O saque foi realizado com sucesso!')
-        except AttributeError:
+                print('Saldo antes do deposito: R$ ',SLCant)
+                print('Saldo depois do deposito: R$ ',self.CheckingBalance)
+                fn.espera(3)
+                aa.ACC()
+        except AttributeError:  
             print('Erro')
             aa.ACC()
     # FUNÇÃO DE APLICAÇÃO #
@@ -262,7 +241,8 @@ class SA(CA):
         try:
             print('Valor disponivel para resgate: R$ ',self.SavingsBalance)
             vR = float(input('Insira um valor para resgate: R$ '))
-            self.SavingsBalanceSLC -= vR
+            self.SavingsBalance -= vR
+            self.CheckingBalance += vR
             print('Seu resgate foi efetuado com sucesso!')
             print('Saldo conta corrente: R$ ',self.CheckingBalance)
             print('Saldo conta poupança: R$ ',self.SavingsBalance)
