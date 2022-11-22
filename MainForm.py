@@ -1,3 +1,13 @@
+"""
+    FEITO POR:
+    CAIO JONATHAN
+    LARISSA BATISTA
+    LIDYANE ALVES
+    LUCAS MENDONÇA
+    PEDRO GABRIEL
+    RYAN VINÍCIUS
+    
+"""
 from ast import Break
 import Function as fn
 from User import user
