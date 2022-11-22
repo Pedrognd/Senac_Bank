@@ -20,6 +20,19 @@ class CA:
         self.Password = sen
         self.CheckingBalance = slc
         self.StatusLog = stt
+        
+    def getCheckingBalance(self):
+        return self.__CheckingBalance
+
+    def setCheckingBalance(self):
+        return self.__CheckingBalance
+
+    def getSavingsBalance(self):
+        return self.__SavingsBalance
+
+    def setSavingsBalance(self):
+        return self.__SavingsBalance
+
 
 class SA(CA):
     def __init__(self,cod='',tit='',sen=0,slc=0,stt=False):
